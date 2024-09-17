@@ -12,7 +12,7 @@ LF='
 usage() {
     echo "Usage: $0 [OPTIONS] <source directory>"
     echo ''
-    echo "-p <prefix>\tcustomize target prefix (default: \"$PREFIX\")"
+    echo "-p <prefix>\tcustomize target prefix (default: \"[../]${PREFIX}\")"
     echo "-n <limit>\tapply uniform directory size (default: source entries / 2)"
     echo "-z\t\tpost-process cbz archival (default: false)"
     echo "-v\t\tshow version"
@@ -69,6 +69,10 @@ if [ "$#" -ne 1 ]; then
 fi
 
 SOURCE="$1"
+
+if [ "$SOURCE" = '.' ]; then
+    PREFIX="../${PREFIX}"
+fi
 
 find_source() {
     find "$SOURCE" \

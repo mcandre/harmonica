@@ -57,6 +57,8 @@ BSD-2-Clause
 
 # NOTES
 
+When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive operations creating larger and larger, corrupt structures.
+
 For best performance, choose a fixed batch size with `-n <batch directory capacity>`, in terms of the number of file entries to place in each batch.
 
 Workflows with generic batches may wish to reduce `-n` by one or more, in order to leave room for a boilerplate cover artwork, README's, etc. to be inserted later into each of the batches.
