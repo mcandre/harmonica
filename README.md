@@ -1,8 +1,8 @@
-# harmonica: directory tree distributor
+# harmonica: comic ebook repackager
 
 # SUMMARY
 
-`harmonica` partitions directories into batches of smaller directories.
+`harmonica` repackages comics into batches of smaller collections.
 
 # EXAMPLE
 
