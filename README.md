@@ -34,6 +34,13 @@ Use `-p` to specify target directory prefix.
 
 See `harmonica -h` for more detail.
 
+# ABOUT
+
+Why, though?
+
+* Poorly written comic ereader apps attempt to load the entire document in memory and then crash. Comics often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files.
+* A classical split archive file (e.g. `*.Z{0-9}{0-9}`) cannot operate in isolation, compared to ordinary directories and ordinary archives.
+
 # LICENSE
 
 BSD-2-Clause
@@ -46,6 +53,7 @@ BSD-2-Clause
 ## Recommended
 
 * [tree](https://linux.die.net/man/1/tree)
+* [zip](https://linux.die.net/man/1/zip) / [tar](https://en.wikipedia.org/wiki/Tar_(computing))
 
 # NOTES
 
