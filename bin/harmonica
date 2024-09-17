@@ -1,0 +1,83 @@
+#!/bin/sh
+unset IFS
+set -euf
+
+PREFIX='issue-'
+BATCH_CAPACITY='0'
+LF='
+'
+
+usage() {
+    echo "Usage: $0 [OPTIONS] <source directory>"
+    echo ''
+    echo "-p\t<destination directory prefix>\tDefault: \"$PREFIX\""
+    echo "-n\t<batch directory capacity>\t\t\tDefault: (source directory entries)/2"
+    echo "-h\tShow usage menu"
+}
+
+ARGS="$*"
+
+for ARG in $ARGS; do
+    case "$ARG" in
+    -p)
+        shift
+
+        if [ "$#" -lt 1 ]; then
+            usage
+            exit 1
+        fi
+
+        PREFIX="$1"
+        shift
+        ;;
+    -n)
+        shift
+
+        if [ "$#" -lt 1 ]; then
+            usage
+            exit 1
+        fi
+
+        BATCH_CAPACITY="$1"
+        shift
+        ;;
+    -h)
+        usage
+        exit
+        ;;
+    esac
+done
+
+if [ "$#" -ne 1 ]; then
+    usage
+    exit 1
+fi
+
+SOURCE="$1"
+
+FIND_OPTIONS="$SOURCE \
+    -name '.DS_Store' -o -name 'Thumbs.db' -prune -o \
+    -type f \
+    -print"
+
+if [ "$BATCH_CAPACITY" -le '0' ]; then
+    SOURCE_DIRECTORY_ENTRIES="$(find $FIND_OPTIONS | wc -l)"
+    BATCH_CAPACITY=$((SOURCE_DIRECTORY_ENTRIES/2))
+fi
+
+I=1
+
+# shellcheck disable=SC3045
+find $FIND_OPTIONS |
+    sort |
+    xargs -n "$BATCH_CAPACITY" |
+    while IFS= read -r "-d${LF}" fs; do
+        TARGET="${PREFIX}${I}"
+        mkdir -p "$TARGET"
+
+        for f in $fs; do
+            cp "$f" "$TARGET"
+        done
+
+        I=$((I + 1))
+    done
