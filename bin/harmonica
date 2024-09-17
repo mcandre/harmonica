@@ -2,6 +2,7 @@
 unset IFS
 set -euf
 
+HARMONICA_VERSION='0.0.1'
 PREFIX='issue-'
 BATCH_CAPACITY='0'
 LF='
@@ -11,8 +12,9 @@ usage() {
     echo "Usage: $0 [OPTIONS] <source directory>"
     echo ''
     echo "-p\t<destination directory prefix>\tDefault: \"$PREFIX\""
-    echo "-n\t<batch directory capacity>\t\t\tDefault: (source directory entries)/2"
-    echo "-h\tShow usage menu"
+    echo "-n\t<batch directory capacity>\tDefault: (source directory entries)/2"
+    echo "-v\t\t\t\t\tShow version"
+    echo "-h\t\t\t\t\tShow usage menu"
 }
 
 ARGS="$*"
@@ -45,6 +47,13 @@ for ARG in $ARGS; do
         usage
         exit
         ;;
+    -v)
+        echo "$HARMONICA_VERSION"
+        exit
+        ;;
+    -*)
+        usage
+        exit 1
     esac
 done
 
