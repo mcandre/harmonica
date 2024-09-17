@@ -38,7 +38,7 @@ See `harmonica -h` for more detail.
 
 Why, though?
 
-* Poorly written comic ereader apps attempt to load the entire document in memory and then crash. Comics often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files.
+* Poorly written multimedia applications attempt to load a large object in memory and then crash. For example, comic ebooks often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files.
 * A classical split archive file (e.g. `*.Z{0-9}{0-9}`) cannot operate in isolation, compared to ordinary directories and ordinary archives.
 
 # LICENSE
