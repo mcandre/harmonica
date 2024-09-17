@@ -55,20 +55,22 @@ fi
 
 SOURCE="$1"
 
-FIND_OPTIONS="$SOURCE \
-    -name '.DS_Store' -o -name 'Thumbs.db' -prune -o \
-    -type f \
-    -print"
+find_source() {
+    find "$SOURCE" \
+        -name '.DS_Store' -o -name 'Thumbs.db' -prune -o \
+        -type f \
+        -print
+}
 
 if [ "$BATCH_CAPACITY" -le '0' ]; then
-    SOURCE_DIRECTORY_ENTRIES="$(find $FIND_OPTIONS | wc -l)"
-    BATCH_CAPACITY=$((SOURCE_DIRECTORY_ENTRIES/2))
+    SOURCE_DIRECTORY_ENTRIES="$(find_source | wc -l)"
+    BATCH_CAPACITY=$((SOURCE_DIRECTORY_ENTRIES / 2))
 fi
 
 I=1
 
 # shellcheck disable=SC3045
-find $FIND_OPTIONS |
+find_source |
     sort |
     xargs -n "$BATCH_CAPACITY" |
     while IFS= read -r "-d${LF}" fs; do
