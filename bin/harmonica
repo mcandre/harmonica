@@ -43,12 +43,12 @@ for ARG in $ARGS; do
         BATCH_CAPACITY="$1"
         shift
         ;;
-    -h)
-        usage
-        exit
-        ;;
     -v)
         echo "$HARMONICA_VERSION"
+        exit
+        ;;
+    -h)
+        usage
         exit
         ;;
     -*)
