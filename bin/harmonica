@@ -5,16 +5,18 @@ set -euf
 HARMONICA_VERSION='0.0.1'
 PREFIX='issue-'
 BATCH_CAPACITY='0'
+POST_PROCESS_CBZ='0'
 LF='
 '
 
 usage() {
     echo "Usage: $0 [OPTIONS] <source directory>"
     echo ''
-    echo "-p\t<destination directory prefix>\tDefault: \"$PREFIX\""
-    echo "-n\t<batch directory capacity>\tDefault: (source directory entries)/2"
-    echo "-v\t\t\t\t\tShow version"
-    echo "-h\t\t\t\t\tShow usage menu"
+    echo "-p <prefix>\tcustomize target prefix (default: \"$PREFIX\")"
+    echo "-n <limit>\tapply uniform directory size (default: source entries / 2)"
+    echo "-z\t\tpost-process cbz archival (default: false)"
+    echo "-v\t\tshow version"
+    echo "-h\t\tshow usage menu"
 }
 
 ARGS="$*"
@@ -41,6 +43,10 @@ for ARG in $ARGS; do
         fi
 
         BATCH_CAPACITY="$1"
+        shift
+        ;;
+    -z)
+        POST_PROCESS_CBZ='1'
         shift
         ;;
     -v)
@@ -89,6 +95,10 @@ find_source |
         for f in $fs; do
             cp "$f" "$TARGET"
         done
+
+        if [ "$POST_PROCESS_CBZ" -eq '1' ]; then
+            zip -r "${TARGET}.cbz" "$TARGET"
+        fi
 
         I=$((I + 1))
     done
