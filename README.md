@@ -2,7 +2,7 @@
 
 # SUMMARY
 
-harmonica partitions directories into batches of smaller directories.
+`harmonica` partitions directories into batches of smaller directories.
 
 # EXAMPLE
 
