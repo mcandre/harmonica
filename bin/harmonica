@@ -121,13 +121,13 @@ find_source |
         TARGET="${PREFIX}${I}"
         mkdir -p "$TARGET"
 
-        for F in $FS; do
-            cp "$F" "$TARGET"
-        done
-
         echo "${ASSETS}," |
         while IFS= read -r '-d,' ASSET; do
             cp "$ASSET" "$TARGET"
+        done
+
+        for F in $FS; do
+            cp "$F" "$TARGET"
         done
 
         if [ "$POST_PROCESS_CBZ" -eq '1' ]; then
