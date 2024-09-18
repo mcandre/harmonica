@@ -49,6 +49,10 @@ yamllint() {
     command yamllint -s .yamllint .
 }
 
+clean() {
+    sh -c "cd examples && (rm -rf issue-* || :)"
+}
+
 if [ "$#" -eq 0 ]; then
     "$DEFAULT_TASK"
     exit

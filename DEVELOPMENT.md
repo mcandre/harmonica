@@ -26,3 +26,9 @@ $ ./build audit
 ```console
 $ ./build [lint]
 ```
+
+# CLEAN
+
+```console
+$ ./build clean
+```
