@@ -32,7 +32,7 @@ Use `-n` to specify batch size.
 
 Use `-p` to specify target directory prefix.
 
-See `harmonica -h` for more detail.
+See `harmonica -h` for more options.
 
 # ABOUT
 

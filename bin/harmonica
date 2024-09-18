@@ -5,7 +5,8 @@ set -euf
 HARMONICA_VERSION='0.0.2'
 PREFIX='issue-'
 BATCH_CAPACITY='0'
-PRE_PROCESS_ZIP='1'
+PRE_PROCESS_ZIP='0'
+ASSETS=''
 POST_PROCESS_CBZ='0'
 LF='
 '
@@ -16,6 +17,7 @@ usage() {
     echo "-p <prefix>\tcustomize target prefix (default: \"[../]${PREFIX}\")"
     echo "-n <limit>\tapply uniform directory size (default: source entries / 2)"
     echo "-u\t\tpre-process expand cbz/zip archive (default: false)"
+    echo "-b <assets>\tcopy boilerplate assets (comma separated) to each batch (default: '')"
     echo "-z\t\tpost-process cbz archival (default: false)"
     echo "-v\t\tshow version"
     echo "-h\t\tshow usage menu"
@@ -49,6 +51,17 @@ for ARG in $ARGS; do
         ;;
     -u)
         PRE_PROCESS_ZIP='1'
+        shift
+        ;;
+    -b)
+        shift
+
+        if [ "$#" -lt 1 ]; then
+            usage
+            exit 1
+        fi
+
+        ASSETS="$1"
         shift
         ;;
     -z)
@@ -104,12 +117,17 @@ I=1
 find_source |
     sort |
     xargs -n "$BATCH_CAPACITY" |
-    while IFS= read -r "-d${LF}" fs; do
+    while IFS= read -r "-d${LF}" FS; do
         TARGET="${PREFIX}${I}"
         mkdir -p "$TARGET"
 
-        for f in $fs; do
-            cp "$f" "$TARGET"
+        for F in $FS; do
+            cp "$F" "$TARGET"
+        done
+
+        echo "${ASSETS}," |
+        while IFS= read -r '-d,' ASSET; do
+            cp "$ASSET" "$TARGET"
         done
 
         if [ "$POST_PROCESS_CBZ" -eq '1' ]; then
