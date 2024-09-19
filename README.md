@@ -32,7 +32,11 @@ issue-2
 
 `-m` controls max directory size (default 250 MiB).
 
-`-prefix` customizes the name of the batch directory prefix.
+`-prefix` customizes the batch prefix.
+
+`-unzip` handles ZIP format archive (.ZIP, .CBZ, .JAR, etc.) source files.
+
+`-zip <.extension>` compresses each batch into independent ZIP format archives.
 
 See `harmonica -help` for more detail.
 
