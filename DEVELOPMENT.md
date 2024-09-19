@@ -12,7 +12,7 @@
 * [ASDF](https://asdf-vm.com/) 0.10 (run `asdf reshim` after provisioning)
 * [direnv](https://direnv.net/) 2
 * [tree](https://linux.die.net/man/1/tree)
-* [zip](https://linux.die.net/man/1/zip) / [tar](https://en.wikipedia.org/wiki/Tar_(computing))
+* [zip](https://linux.die.net/man/1/zip)
 
 Non-UNIX environments may produce subtle adverse effects when linting or generating application ports.
 
