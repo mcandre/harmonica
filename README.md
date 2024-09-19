@@ -9,7 +9,7 @@
 ```console
 $ cd examples
 
-$ harmonica atomic-war
+$ harmonica -n 36 atomic-war
 
 $ tree issue-*
 issue-1
@@ -28,18 +28,47 @@ issue-2
 ...
 ```
 
-Use `-n` to specify batch size.
+`-n` controls max number of files (default unlimited).
 
-Use `-p` to specify target directory prefix.
+`-m` controls max directory size (default 250 MiB).
 
-See `harmonica -h` for more options.
+`-prefix` customizes the name of the batch directory prefix.
+
+See `harmonica -help` for more detail.
 
 # ABOUT
 
 Why, though?
 
-* Poorly written multimedia applications attempt to load a large object in memory and then crash. For example, comic ebooks often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files.
-* A classical split archive file (e.g. `*.Z{0-9}{0-9}`) cannot operate in isolation, compared to ordinary directories and ordinary archives.
+Poorly written multimedia applications attempt to load a large object in memory and then crash. For example, comic ebooks often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files. harmonica divides large archives into smaller archives more likely to successfully process in more comic book side loading ereaders.
+
+Poorly written cloud storage applications that struggle to reliably transfer large files. Some applications fail file transfers if the user doesn't continually force the screen to stay awake. harmonica chunks large archives into smaller chunks. When file transfers fail, it's more convenient to retry a specific smaller chunk file than the original, large file.
+
+Classical split archive files (e.g. `*.Z00`, `*.Z01`, `*.Z02`, ..., `*.ZIP`) are not designed to operate in isolation. harmonica splits your files into ordinary ZIP files.
+
+# WARNING
+
+harmonica is designed to work on a set of files structured in a rigidly flat directory tree structure, with one parent directory (optionally nested inside a ZIP format archive) and one or more direct child files. Nested directory structures may trigger problems.
+
+When in doubt, backup source files onto a separate volume before running harmonica.
+
+# NOTES
+
+When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
+
+# DOWNLOAD
+
+https://github.com/mcandre/harmonica/releases
+
+# INSTALL FROM SOURCE
+
+```console
+$ go install github.com/mcandre/harmonica/cmd/harmonica@latest
+```
+
+# DOCUMENTATION
+
+https://pkg.go.dev/github.com/mcandre/harmonica
 
 # LICENSE
 
@@ -47,25 +76,15 @@ BSD-2-Clause
 
 # RUNTIME REQUIREMENTS
 
-* GNU or BSD [findutils](https://en.wikipedia.org/wiki/Find_(Unix))
-* POSIX compatible [sh](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/sh.html)
+(None)
 
 ## Recommended
 
 * [tree](https://linux.die.net/man/1/tree)
-* [zip](https://linux.die.net/man/1/zip) / [tar](https://en.wikipedia.org/wiki/Tar_(computing))
 
-# NOTES
+# CONTRIBUTING
 
-When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive operations creating larger and larger, corrupt structures.
-
-For best performance, choose a fixed batch size with `-n <batch directory capacity>`, in terms of the number of file entries to place in each batch.
-
-Workflows with generic batches may wish to reduce `-n` by one or more, in order to leave room for a boilerplate cover artwork, README's, etc. to be inserted later into each of the batches.
-
-# CREDITS
-
-* [Atomic War!](https://en.wikisource.org/wiki/Atomic_War!), a Red Scare comic series since lapsed into the public domain
+For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ```text
 =[][][]=
