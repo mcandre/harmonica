@@ -1,3 +1,4 @@
+// Package main implements a CLI comic ebook editor.
 package main
 
 import (

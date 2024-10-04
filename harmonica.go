@@ -1,3 +1,4 @@
+// Package harmonica provides primitives for editing comic ebooks.
 package harmonica
 
 import (
@@ -48,7 +49,7 @@ func Copy(dest string, source string) error {
 func GetDirectorySizeBytes(root string) (int64, error) {
 	var sum int64
 
-	err := filepath.Walk(root, func(pth string, fi fs.FileInfo, err2 error) error {
+	err := filepath.Walk(root, func(_ string, fi fs.FileInfo, err2 error) error {
 		if err2 != nil {
 			return err2
 		}
