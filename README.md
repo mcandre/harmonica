@@ -93,3 +93,7 @@ For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELO
 ```text
 =[][][]=
 ```
+
+# SEE ALSO
+
+* [tigris](https://github.com/mcandre/tigris), a Kindle comic book archiver
