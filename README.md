@@ -96,4 +96,5 @@ For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELO
 
 # SEE ALSO
 
+* [buttery](https://github.com/mcandre/buttery), an animated GIF editor
 * [tigris](https://github.com/mcandre/tigris), a Kindle comic book archiver
