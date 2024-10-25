@@ -4,8 +4,8 @@ github.com/klauspost/compress v1.16.5 h1:IFV2oUNUzZaz+XyusxpLzpzS8Pt5rh0Z16For/d
 github.com/klauspost/compress v1.16.5/go.mod h1:ntbaceVETuRiXiv4DpjP66DpAtAGkEQskQzEyD//IeE=
 github.com/magefile/mage v1.15.0 h1:BvGheCMAsG3bWUDbZ8AyXXpCNwU9u5CB6sM+HNb9HYg=
 github.com/magefile/mage v1.15.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
-github.com/mcandre/mage-extras v0.0.20 h1:hUw33CYkuyByVQW7eNv9E0gjTk2SMZ5Y8AWHdD4aVHM=
-github.com/mcandre/mage-extras v0.0.20/go.mod h1:zr+/cO9v8EtPmjHMVYx7ijYrbT3tfJSNgXc9ze6LJ4s=
+github.com/mcandre/mage-extras v0.0.21 h1:Kif/BsdkQKCIQTmwseYC+TmZLxgjOf+1zJgKctmgNoA=
+github.com/mcandre/mage-extras v0.0.21/go.mod h1:zr+/cO9v8EtPmjHMVYx7ijYrbT3tfJSNgXc9ze6LJ4s=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/saracen/fastzip v0.1.11 h1:NnExbTEJbya7148cov09BCxwfur9tQ5BQ1QyQH6XleA=

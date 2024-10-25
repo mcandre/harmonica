@@ -4,7 +4,7 @@ go 1.23
 
 require (
 	github.com/magefile/mage v1.15.0
-	github.com/mcandre/mage-extras v0.0.20
+	github.com/mcandre/mage-extras v0.0.21
 	github.com/saracen/fastzip v0.1.11
 )
 
