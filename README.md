@@ -84,7 +84,7 @@ BSD-2-Clause
 
 ## Recommended
 
-* [tree](https://linux.die.net/man/1/tree)
+* [tree](https://en.wikipedia.org/wiki/Tree_(command))
 
 # CONTRIBUTING
 
