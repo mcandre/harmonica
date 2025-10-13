@@ -1,11 +1,11 @@
 module github.com/mcandre/harmonica
 
-go 1.24.5
+go 1.24.6
 
 require (
 	github.com/magefile/mage v1.15.0
 	github.com/mcandre/mage-extras v0.0.26
-	github.com/saracen/fastzip v0.1.11
+	github.com/saracen/fastzip v0.2.0
 )
 
 require (
@@ -13,13 +13,12 @@ require (
 	github.com/alexkohler/nakedret/v2 v2.0.6 // indirect
 	github.com/kisielk/errcheck v1.9.0 // indirect
 	github.com/klauspost/compress v1.18.0 // indirect
-	github.com/mcandre/factorio v0.0.13 // indirect
+	github.com/mcandre/factorio v0.0.14 // indirect
 	github.com/saracen/zipextra v0.0.0-20250129175152-f1aa42d25216 // indirect
-	github.com/stretchr/testify v1.8.4 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/mod v0.24.0 // indirect
-	golang.org/x/sync v0.13.0 // indirect
-	golang.org/x/sys v0.32.0 // indirect
+	golang.org/x/sync v0.17.0 // indirect
+	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/tools v0.32.0 // indirect
 	honnef.co/go/tools v0.6.1 // indirect
 )
