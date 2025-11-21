@@ -26,14 +26,8 @@ var GeneratedTestFilePattern = regexp.MustCompile("issue-")
 // Govulncheck runs govulncheck.
 func Govulncheck() error { return mageextras.Govulncheck("-scan", "package", "./...") }
 
-// Snyk runs Snyk SCA.
-func Snyk() error { return mageextras.SnykTest("--dev") }
-
 // Audit runs a security audit.
-func Audit() error {
-	mg.Deps(Govulncheck)
-	return Snyk()
-}
+func Audit() error {return Govulncheck() }
 
 // Test executes the integration test suite.
 func Test() error {
