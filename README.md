@@ -60,6 +60,10 @@ When in doubt, backup source files onto a separate volume before running harmoni
 
 When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
 
+# DOCKER HUB
+
+https://hub.docker.com/r/n4jm4/harmonica
+
 # DOWNLOAD
 
 https://github.com/mcandre/harmonica/releases

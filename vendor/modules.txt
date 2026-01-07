@@ -10,7 +10,7 @@ github.com/alexkohler/nakedret/v2/cmd/nakedret
 ## explicit; go 1.22.0
 github.com/kisielk/errcheck
 github.com/kisielk/errcheck/errcheck
-# github.com/klauspost/compress v1.18.1
+# github.com/klauspost/compress v1.18.2
 ## explicit; go 1.23
 github.com/klauspost/compress
 github.com/klauspost/compress/flate
@@ -31,11 +31,11 @@ github.com/magefile/mage/mage
 github.com/magefile/mage/mg
 github.com/magefile/mage/parse
 github.com/magefile/mage/sh
-# github.com/mcandre/factorio v0.0.16
+# github.com/mcandre/factorio v0.0.17
 ## explicit; go 1.25.4
 github.com/mcandre/factorio
 github.com/mcandre/factorio/cmd/factorio
-# github.com/mcandre/mage-extras v0.0.30
+# github.com/mcandre/mage-extras v0.0.32
 ## explicit; go 1.25.4
 github.com/mcandre/mage-extras
 # github.com/saracen/fastzip v0.2.0
@@ -51,10 +51,10 @@ golang.org/x/exp/typeparams
 # golang.org/x/mod v0.24.0
 ## explicit; go 1.23.0
 golang.org/x/mod/semver
-# golang.org/x/sync v0.18.0
+# golang.org/x/sync v0.19.0
 ## explicit; go 1.24.0
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.38.0
+# golang.org/x/sys v0.39.0
 ## explicit; go 1.24.0
 golang.org/x/sys/unix
 # golang.org/x/tools v0.32.0
