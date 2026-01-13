@@ -60,6 +60,10 @@ When in doubt, backup source files onto a separate volume before running harmoni
 
 When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
 
+# API DOCUMENTATION
+
+https://pkg.go.dev/github.com/mcandre/harmonica
+
 # INSTALL
 
 We support several installation methods.
@@ -100,10 +104,6 @@ go install ./...
 ```
 
 For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
-
-# DOCUMENTATION
-
-https://pkg.go.dev/github.com/mcandre/harmonica
 
 # LICENSE
 
