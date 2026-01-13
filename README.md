@@ -60,19 +60,46 @@ When in doubt, backup source files onto a separate volume before running harmoni
 
 When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
 
-# DOCKER HUB
+# INSTALL
 
-https://hub.docker.com/r/n4jm4/harmonica
+We support several installation methods.
 
-# DOWNLOAD
+## Precompiled Binaries
 
 https://github.com/mcandre/harmonica/releases
 
-# INSTALL FROM SOURCE
+1. Download release archive.
+2. Extract archive.
+3. Select executables for your target platform.
+4. Copy executabless to a convenient location, e.g. `$HOME/bin`.
+5. Ensure location is registered in `$PATH`.
 
-```console
-$ go install github.com/mcandre/harmonica/cmd/harmonica@latest
+## Docker
+
+```sh
+docker pull n4jm4/harmonica
 ```
+
+## go mod
+
+```sh
+go get -tool github.com/mcandre/harmonica/cmd/harmonica@v0.0.10
+go mod tidy
+```
+
+Optional:
+
+```sh
+go mod vendor
+```
+
+## Compile from Source
+
+```sh
+go install ./...
+```
+
+For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 # DOCUMENTATION
 
@@ -89,10 +116,6 @@ BSD-2-Clause
 ## Recommended
 
 * [tree](https://en.wikipedia.org/wiki/Tree_(command))
-
-# CONTRIBUTING
-
-For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ```text
 =[][][]=
