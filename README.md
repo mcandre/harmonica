@@ -87,7 +87,7 @@ docker pull n4jm4/harmonica
 ## go mod
 
 ```sh
-go get -tool github.com/mcandre/harmonica/cmd/harmonica@v0.0.10
+go get -tool github.com/mcandre/harmonica/cmd/harmonica
 go mod tidy
 ```
 
