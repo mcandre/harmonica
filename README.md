@@ -1,5 +1,7 @@
 # harmonica: comic ebook repackager
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica)
+
 # SUMMARY
 
 `harmonica` repackages comics into batches of smaller collections.
