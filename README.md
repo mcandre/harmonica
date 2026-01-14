@@ -1,6 +1,6 @@
 # harmonica: comic ebook repackager
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica)
+[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) ![license](https://img.shields.io/badge/license-BSD-3)
 
 # SUMMARY
 
@@ -61,10 +61,6 @@ When in doubt, backup source files onto a separate volume before running harmoni
 # NOTES
 
 When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
-
-# API DOCUMENTATION
-
-https://pkg.go.dev/github.com/mcandre/harmonica
 
 # INSTALLATION
 
