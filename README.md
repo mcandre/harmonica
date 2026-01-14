@@ -1,6 +1,6 @@
 # harmonica: comic ebook repackager
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) ![license](https://img.shields.io/badge/license-BSD-3)
+[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) [![license](https://img.shields.io/badge/license-BSD-3)](LICENSE.md)
 
 # SUMMARY
 
