@@ -1,12 +1,15 @@
-*issue-*
 *.md
+*.mk
+*issue-*
 .editorconfig
-.rubberstamp
-cover.html
-bin/
-examples/
-.github/
 .git/
+.github/
+.rockhopper/
+.rubberstamp
+bin/
+cover.html
+examples/
+rockhopper.toml
 # Created by https://www.toptal.com/developers/gitignore/api/go
 # Edit at https://www.toptal.com/developers/gitignore?templates=go
 

@@ -5,85 +5,67 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
-	"path/filepath"
-	"regexp"
+	"path"
 
-	"github.com/magefile/mage/mg"
 	"github.com/mcandre/harmonica"
-	mageextras "github.com/mcandre/mage-extras"
+	"github.com/magefile/mage/mg"
+	"github.com/magefile/mage/sh"
+	"github.com/mcandre/mx"
 )
 
-// artifactsPath describes where artifacts are produced.
-var artifactsPath = "bin"
+// ArtifactsPath describes where artifacts are produced.
+const ArtifactsPath = "bin"
 
 // Default references the default build task.
-var Default = Test
+var Default = Build
 
-// GeneratedTestFilePattern matches generated test files.
-var GeneratedTestFilePattern = regexp.MustCompile("issue-")
+// Audit runs security checks.
+func Audit() error { return Govulncheck() }
 
-// Govulncheck runs govulncheck.
-func Govulncheck() error { return mageextras.Govulncheck("-scan", "package", "./...") }
+// Build compiles Go projects.
+func Build() error {
+	dest := ArtifactsPath
 
-// Audit runs a security audit.
-func Audit() error {return Govulncheck() }
+	if d, ok := os.LookupEnv("DEST"); ok && d != "" {
+		dest = d
+	}
 
-// Test executes the integration test suite.
-func Test() error {
-	mg.Deps(Install)
-	cmd := exec.Command("harmonica", "-version")
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	return cmd.Run()
-}
-
-// Deadcode runs deadcode.
-func Deadcode() error { return mageextras.Deadcode("./...") }
-
-// DockerBuild creates local Docker buildx images.
-func DockerBuild() error {
-	return mageextras.Tuggy(
-		"-t", fmt.Sprintf("n4jm4/harmonica:%s", harmonica.Version),
-		"--load",
-	)
-}
-
-// DockerPush creates and tag aliases remote Docker buildx images.
-func DockerPush() error {
-	return mageextras.Tuggy(
-		"-t", fmt.Sprintf("n4jm4/harmonica:%s", harmonica.Version),
-		"-a", "n4jm4/harmonica",
-		"--push",
-	)
-}
-
-// DockerTest creates and tag aliases remote test Docker buildx images.
-func DockerTest() error {
-	if err := mageextras.Tuggy("-t", "n4jm4/harmonica:test", "--load"); err != nil {
+	if err := os.MkdirAll(dest, 0755); err != nil {
 		return err
 	}
 
-	return mageextras.Tuggy("-t", "n4jm4/harmonica:test", "--push")
+	return sh.RunV("go", "build", "-o", dest, "./...")
 }
 
-// GoImports runs goimports.
-func GoImports() error { return mageextras.GoImports("-w") }
+// Clean removes artifacts.
+func Clean() error { mg.Deps(CleanPackages); mg.Deps(CleanBuild); return CleanArtifacts() }
 
-// GoVet runs default go vet analyzers.
-func GoVet() error { return mageextras.GoVet() }
+// CleanArtifacts removes artifacts.
+func CleanArtifacts() error { return sh.RunV("tuco", "-clean") }
+
+// CleanBuild removes build artifacts.
+func CleanBuild() error { return os.RemoveAll(ArtifactsPath) }
+
+// CleanPackages removes OS package artifacts.
+func CleanPackages() error { return sh.RunV("rockhopper", "-c") }
+
+// Deadcode runs deadcode.
+func Deadcode() error { return sh.RunV("deadcode", "./...") }
 
 // Errcheck runs errcheck.
-func Errcheck() error { return mageextras.Errcheck("-blank") }
+func Errcheck() error { return sh.RunV("errcheck", "-blank") }
 
-// Nakedret runs nakedret.
-func Nakedret() error { return mageextras.Nakedret("-l", "0") }
+// GoImports runs goimports.
+func GoImports() error { return mx.GoImports("-w") }
 
-// Shadow runs go vet with shadow checks enabled.
-func Shadow() error { return mageextras.GoVetShadow() }
+// GoVet runs default go vet analyzers.
+func GoVet() error { return mx.GoVet() }
 
-// Staticcheck runs staticcheck.
-func Staticcheck() error { return mageextras.Staticcheck("./...") }
+// Govulncheck runs govulncheck.
+func Govulncheck() error { return sh.RunV("govulncheck", "-scan", "package", "./...") }
+
+// Install builds and installs Go applications.
+func Install() error { return mx.Install() }
 
 // Lint runs the lint suite.
 func Lint() error {
@@ -97,85 +79,44 @@ func Lint() error {
 	return nil
 }
 
-// portBasename labels the artifact basename.
-var portBasename = fmt.Sprintf("harmonica-%s", harmonica.Version)
+// Nakedret runs nakedret.
+func Nakedret() error { return mx.Nakedret("-l", "0") }
 
-// repoNamespace identifies the Go namespace for this project.
-var repoNamespace = "github.com/mcandre/harmonica"
+// Package generates OS packages.
+func Package() error { return sh.RunV("rockhopper", "-r", fmt.Sprintf("version=%s", harmonica.Version)) }
 
-// Factorio cross-compiles Go binaries for a multitude of platforms.
-func Factorio() error {
-	os.Setenv("FACTORIO_PLATFORM_BLOCKLIST", `(android\/.*)|(ios\/.*)|(.*\/wasm)|(plan9\/.*)`)
-	return mageextras.Factorio(portBasename)
-}
+// Shadow runs go vet with shadow checks enabled.
+func Shadow() error { return mx.GoVetShadow() }
 
-// Port builds and compresses artifacts.
-func Port() error {
-	mg.Deps(Factorio);
+// Staticcheck runs staticcheck.
+func Staticcheck() error { return sh.RunV("staticcheck", "./...") }
 
-	return mageextras.Chandler(
-		"-C",
-		artifactsPath,
-		"-czf",
-		fmt.Sprintf("%s.tgz", portBasename),
-		portBasename,
-	)
-}
-
-// Install builds and installs Go applications.
-func Install() error { return mageextras.Install() }
+// Tuco builds crossplatform binaries and tarballs.
+func Tuco() error { return sh.RunV("tuco") }
 
 // Uninstall deletes installed Go applications.
-func Uninstall() error { return mageextras.Uninstall("harmonica") }
+func Uninstall() error { return mx.Uninstall("harmonica") }
 
-// Clean deletes junk files.
-func Clean() error {
-	err := CleanExamples()
-	err2 := CleanArtifacts()
+// Bucket stores OS packages
+const Bucket = "s3://harmonica"
 
-	if err != nil {
-		return err
-	}
+// Artifacts contains precompiled binaries
+var Artifacts = path.Join(".rockhopper", "artifacts")
 
-	return err2
+// Banner identifies the application version.
+var Banner = fmt.Sprintf("harmonica-%s", harmonica.Version)
+
+// Dest stores OS packages for this application version.
+var Dest = fmt.Sprintf("%s/%s/", Bucket, Banner)
+
+// Upload sends packages to CloudFlare R2.
+func Upload() error {
+	return mx.RunVSilent("aws",
+		"--cli-connect-timeout", "1",
+		"s3",
+		"cp",
+		"--recursive",
+		Artifacts,
+		Dest,
+	)
 }
-
-// CleanExamples deletes common generated test files.
-func CleanExamples() error {
-	examples := "examples"
-
-	entries, err := os.ReadDir(examples)
-
-	if err != nil {
-		return err
-	}
-
-	for _, entry := range entries {
-		pth := filepath.Join(examples, entry.Name())
-
-		if !GeneratedTestFilePattern.MatchString(pth) {
-			continue
-		}
-
-		fi, err2 := os.Stat(pth)
-
-		if err2 != nil {
-			return err2
-		}
-
-		if fi.IsDir() {
-			if err3 := os.RemoveAll(pth); err3 != nil {
-				return err3
-			}
-		} else {
-			if err3 := os.Remove(pth); err3 != nil {
-				return err3
-			}
-		}
-	}
-
-	return nil
-}
-
-// CleanArtifacts deletes application ports.
-func CleanArtifacts() error { return os.RemoveAll(artifactsPath) }

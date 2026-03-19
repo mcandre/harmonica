@@ -1,49 +1,19 @@
-# INSTALL
+# INSTALL GUIDE
 
-We support several installation methods.
+We support alternative installation methods.
 
-# PRECOMPILED BINARIES
+# INSTALL (GO)
 
-https://github.com/mcandre/harmonica/releases
-
-## Requirements
-
-(None)
-
-## Instructions
-
-1. Download release archive.
-2. Extract archive.
-3. Select executables for your target platform.
-4. Copy executabless to a convenient location, e.g. `$HOME/bin`.
-5. Ensure location is registered in `$PATH`.
-
-# DOCKER
-
-## Requirements
-
-* [Docker](https://www.docker.com/) 28.0.1+
-
-## Instructions
+buttery is packaged as a Go module.
 
 ```sh
-docker pull n4jm4/harmonica
+go install github.com/mcandre/buttery/cmd/buttery@latest
 ```
 
-# BUILD FROM SOURCE
+## Prerequisites
 
-## Requirements
+* [Go](https://go.dev/)
 
-* [Go](https://go.dev/) 1.26.1+
-* Ensure `GOBIN` is registered in `$PATH`. Validate like `go env GOBIN; echo "$PATH"`
+## Postinstall
 
-## Instructions
-
-```sh
-go get -tool github.com/mcandre/harmonica/src/cmd/harmonica
-go mod tidy
-go mod vendor
-go install tool
-```
-
-For more information on developing harmonica itself, see [DEVELOPMENT.md](DEVELOPMENT.md).
+Register output of `go env GOBIN` to `PATH` environment variable.

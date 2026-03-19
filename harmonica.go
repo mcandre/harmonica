@@ -2,47 +2,17 @@
 package harmonica
 
 import (
-	"github.com/saracen/fastzip"
-
 	"context"
 	"fmt"
-	"io"
 	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/magefile/mage/sh"
+	"github.com/saracen/fastzip"
 )
-
-// Copy file paths.
-func Copy(dest string, source string) error {
-	fIn, err := os.Open(source)
-
-	defer func() {
-		if err2 := fIn.Close(); err2 != nil {
-			log.Println(err2)
-		}
-	}()
-
-	if err != nil {
-		return err
-	}
-
-	fOut, err := os.Create(dest)
-
-	if err != nil {
-		return err
-	}
-
-	defer func() {
-		if err2 := fOut.Close(); err2 != nil {
-			log.Print(err2)
-		}
-	}()
-
-	_, err = io.Copy(fOut, fIn)
-	return err
-}
 
 // GetDirectorySizeBytes totals directory content file size recursively,
 // measured in bytes.
@@ -216,7 +186,7 @@ func (o *Config) Run() error {
 
 		target := filepath.Join(o.targetAbs, filepath.Base(source))
 
-		if err4 := Copy(target, source); err4 != nil {
+		if err4 := sh.Copy(target, source); err4 != nil {
 			return err4
 		}
 
@@ -278,7 +248,7 @@ func (o *Config) nextBatch() error {
 	for _, asset := range o.Assets {
 		target := filepath.Join(o.targetAbs, filepath.Base(asset))
 
-		if err := Copy(target, asset); err != nil {
+		if err := sh.Copy(target, asset); err != nil {
 			return err
 		}
 	}

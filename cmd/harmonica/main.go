@@ -2,13 +2,13 @@
 package main
 
 import (
-	"github.com/mcandre/harmonica"
-
 	"flag"
 	"fmt"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/mcandre/harmonica"
 )
 
 var flagPrefix = flag.String("prefix", "issue-", "")

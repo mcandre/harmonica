@@ -1,19 +1,25 @@
-# harmonica: comic ebook repackager
+# harmonica: comic book repackager
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/n4jm4/harmonica)](https://hub.docker.com/r/n4jm4/harmonica) [![GitHub Downloads](https://img.shields.io/github/downloads/mcandre/harmonica/total?logo=github)](https://github.com/mcandre/harmonica/releases) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) [![Test](https://github.com/mcandre/harmonica/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/harmonica/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-3)](LICENSE.md)
+[![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) [![Test](https://github.com/mcandre/harmonica/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/harmonica/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md)
+
+```txt
+=[][][]=
+```
+
+_Fig 1. beeg harmonica_
 
 # SUMMARY
 
-`harmonica` repackages comics into batches of smaller collections.
+harmonica repackages comics into batches of smaller collections.
 
 # EXAMPLE
 
 ```console
-$ cd examples
+% cd examples
 
-$ harmonica -n 36 atomic-war
+% harmonica -n 36 atomic-war
 
-$ tree issue-*
+% tree issue-*
 issue-1
 ├── Atomic_War_no.1_195211_pg00a.jpg
 ├── Atomic_War_no.1_195211_pg00b.jpg
@@ -30,51 +36,62 @@ issue-2
 ...
 ```
 
-`-n` controls max number of files (default unlimited).
+For feature details, see our [usage guide](USAGE.md).
 
-`-m` controls max directory size (default 250 MiB).
+# DOWNLOAD
 
-`-prefix` customizes the batch prefix.
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th colspan=2>Package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>macOS 26 Tahoe+</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/macos/harmonica-arm64-0.0.10-1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/macos/harmonica-x86_64-0.0.10-1.pkg">Intel</a></td>
+    </tr>
+    <tr>
+      <td>Ubuntu / WSL 2+</td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/ubuntu/harmonica_0.0.10-1_arm64.deb">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/ubuntu/harmonica_0.0.10-1_amd64.deb">Intel</a></td>
+    </tr>
+  </tbody>
+</table>
 
-`-unzip` handles ZIP format archive (.ZIP, .CBZ, .JAR, etc.) source files.
+For more platforms and installation methods, see our [install guide](INSTALL.md).
 
-`-zip <.extension>` compresses each batch into independent ZIP format archives.
-
-See `harmonica -help` for more detail.
+For details on building from source, see our [development guide](DEVELOPMENT.md).
 
 # ABOUT
 
-Why, though?
+harmonica chunks comics ebooks into smaller ebooks. This mitigates glitches when transfering or reading ebooks.
 
-Poorly written multimedia applications attempt to load a large object in memory and then crash. For example, comic ebooks often refuse to read smoothly unless dispersed among a set of smaller (`.CBZ`) files. harmonica divides large archives into smaller archives more likely to successfully process in more comic book side loading ereaders.
-
-Poorly written cloud storage applications that struggle to reliably transfer large files. Some applications fail file transfers if the user doesn't continually force the screen to stay awake. harmonica chunks large archives into smaller chunks. When file transfers fail, it's more convenient to retry a specific smaller chunk file than the original, large file.
-
-Classical split archive files (e.g. `*.Z00`, `*.Z01`, `*.Z02`, ..., `*.ZIP`) are not designed to operate in isolation. harmonica splits your files into ordinary ZIP files.
-
-# WARNING
-
-harmonica is designed to work on a set of files structured in a rigidly flat directory tree structure, with one parent directory (optionally nested inside a ZIP format archive) and one or more direct child files. Nested directory structures may trigger problems.
-
-When in doubt, backup source files onto a separate volume before running harmonica.
-
-# NOTES
+# NOTE
 
 When sourcing the current working directory (`.`), then the targets automatically reposition up to the parent directory, treating the source as immutibile. This reduces the risk of successive harmonica operations nesting archives inside each other.
 
-# INSTALLATION
+# WARNING
 
-See [INSTALL.md](INSTALL.md).
+Nested directories within ebooks are currently unsupported.
 
-## Recommended
+When in doubt, backup source files onto a separate volume before running harmonica.
 
-* [tree](https://en.wikipedia.org/wiki/Tree_(command))
+# RESOURCES
 
-```text
-=[][][]=
+Personal plugs and tools for managing digital content.
+
+* [mcandre/buttery](https://github.com/mcandre/buttery) - an animated GIF editor
+* [mcandre/tigris](https://github.com/mcandre/tigris) - (Kindle) comic book archival utilities
+* [tree](https://en.wikipedia.org/wiki/Tree_(command)) - recursive directory browser
+* [zip](https://infozip.sourceforge.net/) - base archive format for many ebooks
+
+<br/>
+
+```txt
+HHH
 ```
 
-# SEE ALSO
-
-* [buttery](https://github.com/mcandre/buttery), an animated GIF editor
-* [tigris](https://github.com/mcandre/tigris), (Kindle) comic book archival utilities
+_Fig 2. smol harmonica_
