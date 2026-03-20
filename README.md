@@ -36,8 +36,6 @@ issue-2
 ...
 ```
 
-For feature details, see our [usage guide](USAGE.md).
-
 # DOWNLOAD
 
 <table>
@@ -61,9 +59,11 @@ For feature details, see our [usage guide](USAGE.md).
   </tbody>
 </table>
 
-For more platforms and installation methods, see our [install guide](INSTALL.md).
+For more platforms and installation methods, see [INSTALL](INSTALL.md).
 
-For details on building from source, see our [development guide](DEVELOPMENT.md).
+For details on tuning harmonica, see [CONFIGURATION](CONFIGURATION.md).
+
+For details on building from source, see [DEVELOPMENT](DEVELOPMENT.md).
 
 # ABOUT
 

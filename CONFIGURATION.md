@@ -1,12 +1,14 @@
-# USAGE GUIDE
+# CONFIGURATION
 
-We provide a rich set of features.
+harmonica uses CLI flags for configuration.
 
-# LIMIT FILE COUNT
+# -n
 
 `-n <limit>`
 
 Default: (unlimited)
+
+Constraints the number of images per ebook.
 
 Example:
 
@@ -14,11 +16,13 @@ Example:
 harmonica -n 36 atomic-war
 ```
 
-# LIMIT DIRECTORY SIZE
+## -m
 
 `-m <limit>`
 
-Default: (250 MiB)
+Constraints ebook size (MiB).
+
+Default: 250 MiB
 
 Example:
 
@@ -26,9 +30,11 @@ Example:
 harmonica -m 10 atomic-war
 ```
 
-# CUSTOMIZE BATCH PREFIX
+# -prefix
 
 `-prefix <label>`
+
+Customize batch prefix.
 
 Example:
 
@@ -36,9 +42,9 @@ Example:
 harmonica -prefix "my-comics-"
 ```
 
-# DECOMPRESS SOURCE MEDIA
+# -unzip
 
-`-unzip`
+Accept compressed source data.
 
 Supports ZIP format archives (e.g., `.cbz`, `.zip`, etc.)
 
@@ -48,9 +54,11 @@ Example:
 harmonica -unzip atomic-war
 ```
 
-# COMPRESS ARTIFACTS
+# -zip
 
-`zip <.extension>`
+`-zip <.extension>`
+
+Compress artifacts.
 
 Supports ZIP format archives (e.g., `.cbz`, `.zip`, etc.)
 
