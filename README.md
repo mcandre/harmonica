@@ -48,13 +48,13 @@ issue-2
   <tbody>
     <tr>
       <td>macOS 26 Tahoe+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/macos/harmonica-arm64-0.0.10-1.pkg">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/macos/harmonica-x86_64-0.0.10-1.pkg">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.11/macos/harmonica-arm64-0.0.11-1.pkg">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.11/macos/harmonica-x86_64-0.0.11-1.pkg">Intel</a></td>
     </tr>
     <tr>
       <td>Ubuntu / WSL 2+</td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/ubuntu/harmonica_0.0.10-1_arm64.deb">ARM</a></td>
-      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.10/ubuntu/harmonica_0.0.10-1_amd64.deb">Intel</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.11/ubuntu/harmonica_0.0.11-1_arm64.deb">ARM</a></td>
+      <td><a href="https://pub-d141861718d342d19cfd516f2569755e.r2.dev/harmonica-0.0.11/ubuntu/harmonica_0.0.11-1_amd64.deb">Intel</a></td>
     </tr>
   </tbody>
 </table>
