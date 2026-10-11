@@ -2,7 +2,7 @@
 
 [![CloudFlare R2 install media downloads](https://img.shields.io/badge/Packages-F38020?logo=Cloudflare&logoColor=white)](#download) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white)](https://pkg.go.dev/github.com/mcandre/harmonica) [![Test](https://github.com/mcandre/harmonica/actions/workflows/test.yml/badge.svg)](https://github.com/mcandre/harmonica/actions/workflows/test.yml) [![license](https://img.shields.io/badge/license-BSD-0)](LICENSE.md)
 
-```txt
+```text
 =[][][]=
 ```
 
@@ -90,7 +90,7 @@ Personal plugs and tools for managing digital content.
 
 <br/>
 
-```txt
+```text
 HHH
 ```
 
