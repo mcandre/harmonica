@@ -1,6 +1,6 @@
 # harmonica: comic book repackager
 
-[![CloudFlare R2 Downloads](https://badgen.net/static/download/Packages/f38020)](#download) [![API Docs](https://badgen.net/static/docs/API/007d9c?icon=go)](https://pkg.go.dev/github.com/mcandre/harmonica) [![CI/CD](https://badgen.net/github/checks/mcandre/harmonica?icon=github)](https://github.com/mcandre/harmonica/actions) [![License](https://badgen.net/static/license/BSD/ab2b29)](LICENSE.md)
+[![CloudFlare R2 Downloads](https://badgen.net/static/download/Packages/f38020?icon=cloudflare)](#download) [![API Docs](https://badgen.net/static/docs/API/007d9c?icon=go)](https://pkg.go.dev/github.com/mcandre/harmonica) [![CI/CD](https://badgen.net/github/checks/mcandre/harmonica?icon=github)](https://github.com/mcandre/harmonica/actions) [![License](https://badgen.net/static/license/BSD/ab2b29?icon=freebsd)](LICENSE.md)
 
 ```text
 =[][][]=
